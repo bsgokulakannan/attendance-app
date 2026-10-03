@@ -18,15 +18,9 @@ jobs:
         distribution: 'temurin'
         java-version: '17'
 
-    # This official action automatically sets up Gradle and fixes missing wrapper/jar issues!
     - name: Setup Gradle
       uses: gradle/actions/setup-gradle@v3
 
     - name: Build Debug APK with Gradle
       run: gradle assembleDebug
-
-    - name: Upload APK Artifact
-      uses: actions/upload-artifact@v4
-      with:
-        name: app-debug-apk
-        path: app/build/outputs/apk/debug/app-debug.apk
+      working-directory: ./attendance-app
